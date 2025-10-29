@@ -1,0 +1,28 @@
+{
+  "name": "AgroConnect - Farm to Consumer Platform",
+  "short_name": "AgroConnect",
+  "description": "Direct trading platform connecting farmers with consumers",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#16a34a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["shopping", "food", "agriculture"],
+  "lang": "en",
+  "scope": "/",
+  "screenshots": [
+    {
+      "src": "/images/products/tomatoes.svg",
+      "sizes": "400x400",
+      "type": "image/svg+xml"
+    }
+  ]
+}

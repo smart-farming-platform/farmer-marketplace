@@ -1,0 +1,25 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="lettuceGradient" cx="0.3" cy="0.3">
+      <stop offset="0%" stop-color="#a4d65e"/>
+      <stop offset="100%" stop-color="#00b894"/>
+    </radialGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#f8f9fa"/>
+  <!-- Lettuce leaves -->
+  <g fill="url(#lettuceGradient)">
+    <path d="M 200 120 Q 160 140 150 180 Q 160 220 200 200 Q 240 220 250 180 Q 240 140 200 120"/>
+    <path d="M 180 130 Q 140 150 135 190 Q 145 230 180 210 Q 200 215 200 180 Q 200 150 180 130"/>
+    <path d="M 220 130 Q 260 150 265 190 Q 255 230 220 210 Q 200 215 200 180 Q 200 150 220 130"/>
+    <path d="M 200 140 Q 170 160 165 200 Q 175 240 200 220 Q 225 240 235 200 Q 230 160 200 140"/>
+  </g>
+  <!-- Leaf veins -->
+  <g stroke="#00b894" stroke-width="1" fill="none">
+    <path d="M 200 140 Q 180 160 175 180"/>
+    <path d="M 200 140 Q 220 160 225 180"/>
+    <path d="M 200 150 Q 185 170 180 190"/>
+    <path d="M 200 150 Q 215 170 220 190"/>
+  </g>
+  <text x="200" y="320" font-family="Arial, sans-serif" font-size="18" fill="#2d3436" text-anchor="middle" font-weight="bold">Fresh Lettuce</text>
+  <text x="200" y="345" font-family="Arial, sans-serif" font-size="14" fill="#636e72" text-anchor="middle">₹40/piece</text>
+</svg>

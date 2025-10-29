@@ -1,0 +1,42 @@
+{
+  "name": "farm-marketplace-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Farm-to-Consumer Marketplace",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.17",
+    "@stripe/react-stripe-js": "^5.3.0",
+    "@stripe/stripe-js": "^8.2.0",
+    "axios": "^1.6.2",
+    "canvas-to-blob": "^1.0.0",
+    "i18next": "^25.6.0",
+    "i18next-browser-languagedetector": "^8.2.0",
+    "i18next-http-backend": "^3.0.2",
+    "lucide-react": "^0.294.0",
+    "qr-scanner": "^1.4.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.48.2",
+    "react-hot-toast": "^2.6.0",
+    "react-i18next": "^16.2.1",
+    "react-qr-scanner": "^1.0.0-alpha.11",
+    "react-query": "^3.39.3",
+    "react-router-dom": "^6.20.1",
+    "react-webcam": "^7.2.0",
+    "tailwindcss": "^3.3.6",
+    "workbox-webpack-plugin": "^7.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react": "^4.1.1",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "vite": "^5.0.0"
+  }
+}

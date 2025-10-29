@@ -1,0 +1,36 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cornGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fdcb6e"/>
+      <stop offset="100%" stop-color="#e17055"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#f8f9fa"/>
+  <ellipse cx="200" cy="200" rx="40" ry="120" fill="url(#cornGradient)"/>
+  <ellipse cx="200" cy="200" rx="35" ry="115" fill="none" stroke="#e17055" stroke-width="2"/>
+  <!-- Corn kernels -->
+  <g fill="#f39c12">
+    <circle cx="185" cy="150" r="4"/>
+    <circle cx="200" cy="145" r="4"/>
+    <circle cx="215" cy="150" r="4"/>
+    <circle cx="185" cy="170" r="4"/>
+    <circle cx="200" cy="165" r="4"/>
+    <circle cx="215" cy="170" r="4"/>
+    <circle cx="185" cy="190" r="4"/>
+    <circle cx="200" cy="185" r="4"/>
+    <circle cx="215" cy="190" r="4"/>
+    <circle cx="185" cy="210" r="4"/>
+    <circle cx="200" cy="205" r="4"/>
+    <circle cx="215" cy="210" r="4"/>
+    <circle cx="185" cy="230" r="4"/>
+    <circle cx="200" cy="225" r="4"/>
+    <circle cx="215" cy="230" r="4"/>
+    <circle cx="185" cy="250" r="4"/>
+    <circle cx="200" cy="245" r="4"/>
+    <circle cx="215" cy="250" r="4"/>
+  </g>
+  <!-- Husk -->
+  <path d="M 160 100 Q 180 80 200 100 Q 220 80 240 100 L 230 140 Q 200 120 170 140 Z" fill="#00b894"/>
+  <text x="200" y="340" font-family="Arial, sans-serif" font-size="18" fill="#2d3436" text-anchor="middle" font-weight="bold">Sweet Corn</text>
+  <text x="200" y="365" font-family="Arial, sans-serif" font-size="14" fill="#636e72" text-anchor="middle">₹15/piece</text>
+</svg>
