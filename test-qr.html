@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test QR Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .qr-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        .test-info {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌱 QR Code Test</h1>
+    
+    <div class="qr-container">
+        <h3>Test Product QR Code</h3>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=🌱%20AGROCONNECT%20PRODUCT%20🌱%0AOrganic%20Tomatoes%0AFarmer:%20John%20Smith%0APrice:%20$5.99%0ACategory:%20Vegetables%0AProduct%20ID:%20AGR001%0A%0A📞%20Contact:%20+1-555-FARM-123%0A📧%20Email:%20farmer123@agroconnect.com%0A🌐%20Fresh%20from%20farm%20to%20table!" alt="Test QR Code" />
+        <p>Scan this QR code with your phone camera</p>
+    </div>
+    
+    <div class="test-info">
+        <h4>What you should see when scanning:</h4>
+        <pre>🌱 AGROCONNECT PRODUCT 🌱
+Organic Tomatoes
+Farmer: John Smith
+Price: $5.99
+Category: Vegetables
+Product ID: AGR001
+
+📞 Contact: +1-555-FARM-123
+📧 Email: farmer123@agroconnect.com
+🌐 Fresh from farm to table!</pre>
+    </div>
+    
+    <div class="qr-container">
+        <h3>Test Payment QR Code</h3>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=💰%20PAY%20John%20Smith%20💰%0AAmount:%20$5.99%0AFor:%20Fresh%20organic%20tomatoes%20from%20local%20farm%0A%0APayment%20Options:%0A📞%20Call:%20+1-555-FARM-123%0A📧%20Email:%20farmer123@agroconnect.com%0A💳%20Venmo:%20@farmer123%0A💵%20Cash%20on%20delivery%20available" alt="Test Payment QR Code" />
+        <p>Scan this QR code for payment info</p>
+    </div>
+    
+    <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin: 20px 0;">
+        <h4>📱 How to test:</h4>
+        <ol style="text-align: left;">
+            <li>Open your phone's camera app</li>
+            <li>Point it at the QR code above</li>
+            <li>Tap the notification that appears</li>
+            <li>You should see the product/payment info as text</li>
+        </ol>
+    </div>
+</body>
+</html>

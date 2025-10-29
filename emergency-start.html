@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroConnect - Emergency Startup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .success { background: rgba(34, 197, 94, 0.3); }
+        .error { background: rgba(239, 68, 68, 0.3); }
+        .warning { background: rgba(245, 158, 11, 0.3); }
+        .info { background: rgba(59, 130, 246, 0.3); }
+        button {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+        }
+        button:hover { background: #059669; }
+        .danger { background: #ef4444; }
+        .danger:hover { background: #dc2626; }
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌱 AgroConnect - Emergency Startup</h1>
+        <p>Use this page if your main application links are not working.</p>
+
+        <div id="diagnostics">
+            <h2>🔍 System Diagnostics</h2>
+            <div id="diagnostic-results"></div>
+        </div>
+
+        <div class="grid">
+            <button onclick="testURL('http://localhost:5173')">Test Port 5173</button>
+            <button onclick="testURL('http://localhost:3000')">Test Port 3000</button>
+            <button onclick="testURL('http://127.0.0.1:5173')">Test 127.0.0.1:5173</button>
+            <button onclick="testURL('http://127.0.0.1:3000')">Test 127.0.0.1:3000</button>
+        </div>
+
+        <h2>📋 Quick Actions</h2>
+        <div class="grid">
+            <button onclick="openDevTools()">Open Dev Tools</button>
+            <button onclick="clearCache()">Clear Browser Cache</button>
+            <button onclick="checkConsole()">Check Console Errors</button>
+            <button onclick="testJavaScript()">Test JavaScript</button>
+        </div>
+
+        <h2>🚀 Manual Startup Commands</h2>
+        <p>Copy and paste these commands in your terminal:</p>
+        
+        <h3>Windows (Command Prompt):</h3>
+        <pre>cd frontend
+npm install
+npm run dev</pre>
+
+        <h3>Windows (PowerShell):</h3>
+        <pre>Set-Location frontend
+npm install
+npm run dev</pre>
+
+        <h3>Mac/Linux:</h3>
+        <pre>cd frontend
+npm install
+npm run dev</pre>
+
+        <h2>🔧 Troubleshooting Steps</h2>
+        <ol>
+            <li><strong>Check Node.js:</strong> <button onclick="checkNode()">Test Node.js</button></li>
+            <li><strong>Kill existing processes:</strong> <button onclick="showKillCommands()">Show Commands</button></li>
+            <li><strong>Try different port:</strong> <button onclick="showPortCommands()">Show Commands</button></li>
+            <li><strong>Reset everything:</strong> <button class="danger" onclick="showResetCommands()">Show Reset Commands</button></li>
+        </ol>
+
+        <div id="output"></div>
+
+        <h2>📞 Emergency Links</h2>
+        <p>If the development server is running, try these direct links:</p>
+        <div class="grid">
+            <button onclick="window.open('http://localhost:5173', '_blank')">Open localhost:5173</button>
+            <button onclick="window.open('http://localhost:3000', '_blank')">Open localhost:3000</button>
+            <button onclick="window.open('http://127.0.0.1:5173', '_blank')">Open 127.0.0.1:5173</button>
+            <button onclick="window.open('http://127.0.0.1:3000', '_blank')">Open 127.0.0.1:3000</button>
+        </div>
+
+        <div class="status info">
+            <strong>💡 Pro Tip:</strong> If nothing works, try opening this file in a different browser or incognito mode.
+        </div>
+    </div>
+
+    <script>
+        function addStatus(message, type = 'info') {
+            const output = document.getElementById('output');
+            const div = document.createElement('div');
+            div.className = `status ${type}`;
+            div.innerHTML = message;
+            output.appendChild(div);
+        }
+
+        function testURL(url) {
+            addStatus(`Testing ${url}...`, 'info');
+            
+            fetch(url)
+                .then(response => {
+                    if (response.ok) {
+                        addStatus(`✅ ${url} is accessible!`, 'success');
+                        if (confirm(`${url} is working! Open it now?`)) {
+                            window.open(url, '_blank');
+                        }
+                    } else {
+                        addStatus(`❌ ${url} returned status ${response.status}`, 'error');
+                    }
+                })
+                .catch(error => {
+                    addStatus(`❌ ${url} is not accessible: ${error.message}`, 'error');
+                });
+        }
+
+        function openDevTools() {
+            addStatus('Opening Developer Tools... (Press F12 if it doesn\'t open)', 'info');
+            // This won't actually open dev tools, but reminds user
+            alert('Press F12 to open Developer Tools, then check the Console tab for errors.');
+        }
+
+        function clearCache() {
+            addStatus('Clearing browser cache...', 'info');
+            if ('caches' in window) {
+                caches.keys().then(names => {
+                    names.forEach(name => {
+                        caches.delete(name);
+                    });
+                });
+            }
+            localStorage.clear();
+            sessionStorage.clear();
+            addStatus('✅ Cache cleared! Try refreshing the page.', 'success');
+        }
+
+        function checkConsole() {
+            addStatus('Check the browser console (F12) for any red error messages.', 'info');
+            console.log('🔍 AgroConnect Emergency Diagnostic - Check for errors above this message');
+        }
+
+        function testJavaScript() {
+            try {
+                const test = () => 'JavaScript is working!';
+                const result = test();
+                addStatus(`✅ ${result}`, 'success');
+            } catch (error) {
+                addStatus(`❌ JavaScript error: ${error.message}`, 'error');
+            }
+        }
+
+        function checkNode() {
+            addStatus('To check Node.js, open terminal and run: node --version', 'info');
+            addStatus('You should see something like: v18.17.0 or v20.5.0', 'info');
+        }
+
+        function showKillCommands() {
+            const commands = `
+Windows:
+netstat -ano | findstr :5173
+taskkill /PID <PID_NUMBER> /F
+
+Mac/Linux:
+lsof -ti:5173 | xargs kill -9
+            `;
+            addStatus(`Kill process commands:<pre>${commands}</pre>`, 'info');
+        }
+
+        function showPortCommands() {
+            const commands = `
+Try different port:
+npm run dev -- --port 3000
+npm run dev -- --port 8080
+npm run dev -- --port 4000
+            `;
+            addStatus(`Different port commands:<pre>${commands}</pre>`, 'info');
+        }
+
+        function showResetCommands() {
+            const commands = `
+Complete reset (DANGER - deletes node_modules):
+rm -rf node_modules package-lock.json
+npm install
+npm run dev
+
+Windows:
+rmdir /s node_modules
+del package-lock.json
+npm install
+npm run dev
+            `;
+            addStatus(`Reset commands (USE WITH CAUTION):<pre>${commands}</pre>`, 'warning');
+        }
+
+        // Auto-run diagnostics
+        window.onload = function() {
+            addStatus('🚀 Emergency startup page loaded', 'success');
+            addStatus('Current URL: ' + window.location.href, 'info');
+            addStatus('User Agent: ' + navigator.userAgent, 'info');
+            addStatus('Online Status: ' + (navigator.onLine ? 'Online' : 'Offline'), navigator.onLine ? 'success' : 'error');
+            
+            // Test common development ports
+            setTimeout(() => {
+                testURL('http://localhost:5173');
+                testURL('http://localhost:3000');
+            }, 1000);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{
+  "name": "agroconnect-farming-platform",
+  "version": "2.0.0",
+  "description": "Smart farming platform with weather prediction, crop suggestions, QR scanning, GPS tracking, video calling, and integrated marketplace",
+  "main": "backend/server.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "setup:git": "git init && git add . && git commit -m '🌱 Initial commit: AgroConnect Smart Farming Platform'",
+    "deploy:github": "git push -u origin main",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YOUR_USERNAME/agroconnect-farming-platform.git"
+  },
+  "keywords": [
+    "farming",
+    "agriculture",
+    "weather-prediction",
+    "crop-suggestions",
+    "marketplace",
+    "qr-scanner",
+    "gps-tracking",
+    "video-calling",
+    "ai-powered",
+    "smart-farming",
+    "react",
+    "nodejs",
+    "express",
+    "mongodb"
+  ],
+  "author": "AgroConnect Development Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/agroconnect-farming-platform/issues"
+  },
+  "homepage": "https://github.com/YOUR_USERNAME/agroconnect-farming-platform#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}

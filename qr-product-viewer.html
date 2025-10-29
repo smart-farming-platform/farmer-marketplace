@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroConnect - Product Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #16a085 0%, #27ae60 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .header h1 {
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        
+        .content {
+            padding: 30px 20px;
+        }
+        
+        .product-card {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .product-name {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .farmer-name {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+        
+        .category {
+            display: inline-block;
+            background: #ecf0f1;
+            color: #34495e;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .info-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .info-label {
+            font-size: 0.8em;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-success {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .features {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .feature-icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+        }
+        
+        .feature-text {
+            color: #2c3e50;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        
+        .error {
+            text-align: center;
+            color: #e74c3c;
+            padding: 20px;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .actions {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🌱</div>
+            <h1>AgroConnect</h1>
+            <p>Fresh from Farm to Table</p>
+        </div>
+        
+        <div class="content" id="content">
+            <!-- Content will be loaded here -->
+        </div>
+        
+        <div class="footer">
+            <p>Powered by AgroConnect • Connecting Farmers & Consumers</p>
+        </div>
+    </div>
+
+    <script>
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                data: params.get('data'),
+                name: params.get('name'),
+                farmer: params.get('farmer'),
+                price: params.get('price'),
+                category: params.get('category'),
+                id: params.get('id')
+            };
+        }
+        
+        function displayProduct(productData) {
+            const content = document.getElementById('content');
+            
+            content.innerHTML = `
+                <div class="product-card">
+                    <div class="product-name">${productData.name}</div>
+                    <div class="farmer-name">by ${productData.farmer}</div>
+                    <div class="price">$${productData.price}</div>
+                    <div class="category">${productData.category}</div>
+                </div>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Product ID</div>
+                        <div class="info-value">${productData.id}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Farmer ID</div>
+                        <div class="info-value">${productData.farmerId || 'N/A'}</div>
+                    </div>
+                </div>
+                
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">🌿</div>
+                        <div class="feature-text">Fresh & Organic</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🚚</div>
+                        <div class="feature-text">Direct from Farm</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">✅</div>
+                        <div class="feature-text">Quality Guaranteed</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📱</div>
+                        <div class="feature-text">Easy Ordering</div>
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <a href="tel:+1234567890" class="btn btn-primary">📞 Call Farmer</a>
+                    <a href="sms:+1234567890?body=Hi, I'm interested in ${productData.name}" class="btn btn-success">💬 Send SMS</a>
+                </div>
+            `;
+        }
+        
+        function displayError(message) {
+            const content = document.getElementById('content');
+            content.innerHTML = `
+                <div class="error">
+                    <h2>❌ Error</h2>
+                    <p>${message}</p>
+                    <p>Please scan a valid QR code from AgroConnect.</p>
+                </div>
+            `;
+        }
+        
+        // Load product data
+        window.onload = function() {
+            const params = getUrlParams();
+            
+            try {
+                let productData;
+                
+                if (params.data) {
+                    // Parse JSON data from QR code
+                    productData = JSON.parse(decodeURIComponent(params.data));
+                } else if (params.name && params.farmer) {
+                    // Use individual parameters
+                    productData = {
+                        name: params.name,
+                        farmer: params.farmer,
+                        price: params.price || 'Contact for price',
+                        category: params.category || 'Farm Product',
+                        id: params.id || 'N/A',
+                        farmerId: 'N/A'
+                    };
+                } else {
+                    throw new Error('No product data found');
+                }
+                
+                displayProduct(productData);
+                
+            } catch (error) {
+                console.error('Error loading product data:', error);
+                displayError('Invalid product data. Please scan a valid QR code.');
+            }
+        };
+        
+        // Add some interactivity
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('btn')) {
+                e.target.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    e.target.style.transform = '';
+                }, 150);
+            }
+        });
+    </script>
+</body>
+</html>
